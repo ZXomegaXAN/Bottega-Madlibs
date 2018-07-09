@@ -4,26 +4,29 @@ import Input from './input';
 
 class Card extends Component {
 
-constructor() {
-	super()
+	constructor() {
+		super()
+		
+		this.state = {
+			color: 'Red',
+			pluralNoun: ''
+		}
 
-	this.state = {
-		color: 'Red',
-		pluralNoun: ''
+		this.handleInputChange = this.handleInputChange.bind(this);
 	}
-}
 
-handleInputChange() {
-	this.setState({ color: 'red' })
-}
+	handleInputChange(event) {
+		this.setState({ color: event.target.value })
+	}
 
 	render() {
-return (
-	<div>
-		<h1>{this.state.color}</h1>
-		<input/>
-		</div>
-);
+
+		return (
+			<div className="card">
+				<h1>{this.state.color}</h1>
+				<input onChange={this.handleInputChange}/>
+			</div>
+		)
 
 		return (
 			<div className="card">
