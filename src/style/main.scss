@@ -1,10 +1,212 @@
+@mixin button {
+	height: 50px;
+	width: 350px;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+	color: white;
+	font-family: 'Montserrat';
+	font-size: 22px;
+	text-align: center;
+}
+
+.gray {
+	background: #5f5f5f;
+}
+
+.red {
+	background: #630000;
+}
+
 .home {
-	background-color: rgba(207, 207, 207, 0.3);
+	background-color: rgba(207, 207, 207, 0.06);
+	display: grid;
+	justify-items: center;
+	grid-template-rows: [header-s] 218px [header-e card-s] minmax(736px, 994px) [card-end];
+}
+
+.header {
+	align-self: center;
+	text-align: center;
+	font-family: 'Montserrat';
+	color: white;
+
+	&__skew {
+		background-color: #ffffff;
+		height: 100vh;
+		width: 100vw;
+		position: fixed;
+		z-index: -10;
+		top: 0;
+		left: 0;
+		-webkit-clip-path: polygon(50% 0%, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 0);
+		clip-path: polygon(50% 0%, 100% 0, 100% 100%, 50% 100%, 0 100%, 0 0);
+	}
+
+	&__skew2 {
+		background-color: #5f5f5f;
+		height: 100vh;
+		width: 100vw;
+		position: fixed;
+		z-index: -5;
+		top: 0;
+		left: 0;
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 80%, 60% 50%, 0 20%);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 80%, 60% 50%, 0 20%);
+	}
+
+	&__skew3 {
+		background-color: #630000;
+		height: 100vh;
+		width: 100vw;
+		position: fixed;
+		z-index: -3;
+		top: 0;
+		left: 0;
+		-webkit-clip-path: polygon(15% 0, 100% 0, 100% 50%, 100% 65%, 100% 100%, 15% 100%, 100% 50%);
+		clip-path: polygon(15% 0, 100% 0, 100% 50%, 100% 65%, 100% 100%, 15% 100%, 100% 50%);
+	}
+
+	&__skew4 {
+		background-color: #000000;
+		height: 100vh;
+		width: 100vw;
+		position: fixed;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		-webkit-clip-path: polygon(55% 0, 100% 0, 100% 35%, 100% 65%, 100% 100%, 55% 100%, 100% 65%, 100% 35%);
+		clip-path: polygon(55% 0, 100% 0, 100% 35%, 100% 65%, 100% 100%, 55% 100%, 100% 65%, 100% 35%);
+	}
+
+	h1 {
+		font-size: 36px;
+		font-weight: 500;
+		line-height: 44px;
+	}
+
+	p {
+		color: rgba(255, 255, 255, 0.75);
+		font-size: 15px;
+		font-weight: 300;
+		line-height: 19px;
+		width: 400px;
+	}
 }
 
 .card {
-	height: 736px;
+	min-height: 736px;
+	min-height: 994px;
 	width: 1240px;
 	box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.3);
 	border-radius: 7px;
+	display: grid;
+	grid-template-rows: 1fr 50px;
+	background-color: white;
+
+	&__inputs {
+		grid-template-rows: repeat(4, 27px);
+		grid-template-columns: repeat(4, 1fr);
+		grid-row-gap: 120px;
+		margin-top: 66px;
+		margin-left: 83px;
+		margin-right: 83px;
+		justify-items: center;
+		align-items: center;
+		display: grid;
+	}
+
+	button {
+		justify-self: center;
+	}
+
+	button:focus {
+		outline: none;
+	}
+
+	&__generate {
+		background-color: #00cb79;
+		@include button;
+		transform: translateY(-355px);
+	}
+
+	&__clear {
+		background-color: #45b0e5;
+		@include button;
+		transform: translateY(50%);
+	}
+
+	&__content {
+		width: 1100px;
+		height: 297px;
+		background-color: #f2f2f2;
+		justify-self: center;
+		margin-bottom: 84px;
+
+		font-family: 'Montserrat';
+
+		&__label {
+			height: 18px;
+			width: 18px;
+			background: black;
+			color: white;
+			border-radius: 50%;
+			font-size: 14px;
+			line-height: 22px;
+			text-align: center;
+			padding-bottom: 2px;
+			display: inline-block;
+			margin: 4px;
+		}
+		
+		p {
+			padding: 50px 47px;
+			font-size: 16px;
+			font-weight: 300;
+			line-height: 29px;
+		}
+	}
+}
+
+.input {
+	font-family: 'Monsterrat';
+	text-align: center;
+	display: grid;
+	grid-template-columns: [number-s] 26px [number-e input-e] 1fr [input-e];
+	grid-column-gap: 8px;
+	height: 47px;
+	// grid-template-rows: 1fr 1fr 1fr;
+	&__title {
+		grid-column: input-s/input-e;
+		color: #5f5f5f;
+		font-size: 14px;
+		font-weight: 300;
+	}
+	
+	input {
+		grid-column: input-s/input-e;
+		border: none;
+		font-size: 15px;
+		text-align: center;
+		padding: 4px 0;
+		border-bottom: 1px solid #5f5f5f;
+		margin-bottom: 1px;
+		transition: all .3s ease;
+		// width: 190px;
+		// height: 40px;
+		
+		&:focus {
+			outline: none;
+			border-bottom: 3px solid #630000;
+		}
+	}
+
+	&__number {
+		grid-column: number-s/number-e;
+		color: white;
+		font-size: 20px;
+		line-height: 24px;
+		height: 26px;
+		width: 26px;
+		border-radius: 50%;
+	}
 }
